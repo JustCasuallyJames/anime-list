@@ -5,38 +5,35 @@ import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 
 function App() {
+	axios.defaults.baseURL = 'http://localhost:3000'; //this is to set the default so that the axios grabs data from that specific endpoint
+
 	const [animeList, setAnimeList] = useState([]);
 	const [topAnime, setTopAnime] = useState([]);
 	const [search, setSearch] = useState("");
 	const [animeData, setAnimeData] = useState([]);
-	// const getTopAnime = async () =>{
-	// 	const tempAnime = await fetch(`https://api.jikan.moe/v3/top/anime/1/bypopularity`)
-	// 						.then(res => res.json());
-		
-	// 	setTopAnime(tempAnime.top.slice(0,5));
-	// }
-	
+
 	const getTopAnime = () =>{
-		const tempAnime = axios.get("http://localhost:3000/getAnimelist")
-			.then(res => {
-				//console.log("this is the temp anime:", typeof res);
-				setTopAnime(res.data.top.slice(0,5)); //this grabs the first 5 elements of the top animes and sets it to the top anime
-			})
-			.catch(err => { console.log(err);})
+		const tempAnime = axios.get("/getAnimelist")
+			.then(res => res.data) //gets the response from the call and returns the data to be used to set the top Anime's
+			//this will grab the top elements of the top animes and sets it to the topAnime value
+			.then(data => setTopAnime(data.top.slice(0,10)))
+			.catch(err => console.log(err)) //catches for errors
 	}
 
 	const HandleSearch = e => {
+		/*
+			On search,  
+		*/
 		e.preventDefault();
 		console.log(search)
 		fetchAnime(search)
 	}
 
-	const fetchAnime = async (query) =>{
-		const temp = await fetch(`https://api.jikan.moe/v3/
-		search/anime?q=${query}&order_by=title&sort=asc&limit=5`)
-			.then(res => res.json());
-
-		setAnimeList(temp.results);
+	const fetchAnime = async (anime) =>{
+		const temp = axios.get(`/${anime}`) //creates a promise to get the data at /some anime
+			.then(res => res.data) //grabs the responses data
+			.then(data => setAnimeList(data.results)) //grabs the results and saves it into the animeList variable
+			.catch(err => console.log(err))
 	}
 
 	useEffect(() =>{
@@ -50,7 +47,7 @@ function App() {
       	<div className="App">
         	<Header/>
 			<div className="content-wrap">
-				<Sidebar topAnime={topAnime}/>
+				{/* <Sidebar topAnime={topAnime}/> */}
 				<MainContent HandleSearch={HandleSearch}
 				search={search}
 				setSearch={setSearch}
