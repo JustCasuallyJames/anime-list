@@ -128,6 +128,16 @@
   padding: 16px 8px;
 }
 
+.content-wrap main .anime-list .anime-card .modal-button {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  width: 90%;
+}
+
 .content-wrap main .anime-list .anime-card a {
   text-decoration: none;
 }
@@ -172,7 +182,7 @@
   display: inline-block;
   vertical-align: middle;
   width: 100%;
-  height: 500px;
+  height: 600px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 16px;
