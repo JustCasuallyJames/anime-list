@@ -19,7 +19,7 @@ const MainContent = (props) => {
                 </form>
             </div>
             
-            <Posts animeList={props.animeList}/>
+            <Posts animeList={props.animeList} show={props.show} setShow={props.setShow}/>
             {/* If it is loading, then that means it is already called. Which means if the api calls it, then it'll only display the pagination when it's already loaded */}
             {props.loaded ? <Pagination 
             postsPerPage={props.postsPerPage} 

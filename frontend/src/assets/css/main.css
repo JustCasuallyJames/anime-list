@@ -122,9 +122,9 @@
 
 .content-wrap main .anime-list .anime-card {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 33.333%;
-          flex: 1 1 33.333%;
-  max-width: 33.333%;
+      -ms-flex: 1 1 33.33333%;
+          flex: 1 1 33.33333%;
+  max-width: 33.33333%;
   padding: 16px 8px;
 }
 
@@ -132,15 +132,17 @@
   text-decoration: none;
 }
 
-.content-wrap main .anime-list .anime-card figure {
+.content-wrap main .anime-list .anime-card .figure-outer-block {
   display: block;
   margin-bottom: 16px;
+  padding: 2rem;
+  padding-bottom: 0.7rem;
 }
 
-.content-wrap main .anime-list .anime-card figure img {
+.content-wrap main .anime-list .anime-card .figure-outer-block .image-inner-block {
   display: block;
   width: 100%;
-  height: 350px;
+  height: 600px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 16px;
@@ -150,14 +152,39 @@
   transition: 0.4s;
 }
 
-.content-wrap main .anime-list .anime-card h3 {
+.content-wrap main .anime-list .anime-card .anime-card-title {
   color: #313131;
+  text-align: center;
 }
 
-.content-wrap main .anime-list .anime-card:hover figure img {
+.content-wrap main .anime-list .anime-card:hover .figure-outer-block .image-inner-block {
   -webkit-box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
 }
-/*# sourceMappingURL=main.css.map */
+
+.content-wrap main .anime-list .anime-card .modal-entire-body {
+  display: inline-block;
+}
+
+.content-wrap main .anime-list .anime-card .modal-entire-body img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  height: 500px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 16px;
+  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+}
+
+.content-wrap main .anime-list .anime-card .modal-entire-body h2 {
+  display: inline-block;
+}
+
+.content-wrap main .anime-list .anime-card .modal-entire-body h3 {
+  display: inline-block;
+}

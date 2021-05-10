@@ -1,16 +1,18 @@
-import React from 'react';
+import { React, useState } from 'react';
+import AnimeDetails from './AnimeDetails.js';
 
-const AnimeCard = ({ anime }) => {
+const AnimeCard = ({ anime, index}) => {
+
     return (
         <article className="anime-card">
-            <a href={anime.url} target="_blank" rel="noreferrer">
-                <figure>
-                    <img src={anime.image_url} alt="Anime Image"/>
+            <button type="button" class="btn shadow-none" data-bs-toggle="modal" 
+            data-bs-target={`#animedetails-${index}`} >
+                <figure className="figure-outer-block">
+                    <img className="image-inner-block" src={anime.image_url} alt="Anime Image" />
                 </figure>
-                <h3>{anime.title}</h3>
-            </a>
-
-        </article>
+                <h3 className="anime-card-title">{anime.title}</h3>
+            </button>
+        </article >
     );
 };
 

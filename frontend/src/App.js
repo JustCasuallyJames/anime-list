@@ -3,19 +3,21 @@ import axios from 'axios';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
+import AnimeDetails from './components/AnimeDetails';
 
-import Pagination from './components/Pagination';
 
 function App() {
 	axios.defaults.baseURL = 'http://localhost:3000'; //this is to set the default so that the axios grabs data from that specific endpoint
-
+	//used for the accessing of the animes
 	const [animeList, setAnimeList] = useState([]);
 	const [topAnime, setTopAnime] = useState([]);
 	const [search, setSearch] = useState("");
 	const [animeData, setAnimeData] = useState([]);
+	//primarily used for the pagination
 	const [loaded, setLoaded] = useState(false);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [postsPerPage, setPostPerPage] = useState(10);
+
 
 	console.log("This is posts:", animeList);
 
@@ -38,7 +40,7 @@ function App() {
 	}
 
 	const fetchAnime = async (anime) =>{
-		const temp = axios.get(`/${anime}`) //creates a promise to get the data at /some anime
+		const temp = axios.get(`/${anime}`) //creates a promise to get the data at /some-anime
 			.then(res => res.data) //grabs the responses data
 			.then(data => {
 				setLoaded(true);
@@ -86,14 +88,7 @@ function App() {
 				nextPage={nextPage}
 				animeList={currentPosts}
 				loaded={loaded}
-				/>
-				{/* <Pagination 
-				postsPerPage={props.postsPerPage} 
-				totalPosts={props.animeList.length}
-				paginate={props.paginate}
-				prevPage={props.prevPage}
-				nextPage={props.nextPage}
-				/> */}				
+				/>				
 			</div>
       	</div>
   );
