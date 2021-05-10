@@ -4,6 +4,8 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 
+import Pagination from './components/Pagination';
+
 function App() {
 	axios.defaults.baseURL = 'http://localhost:3000'; //this is to set the default so that the axios grabs data from that specific endpoint
 
@@ -11,6 +13,11 @@ function App() {
 	const [topAnime, setTopAnime] = useState([]);
 	const [search, setSearch] = useState("");
 	const [animeData, setAnimeData] = useState([]);
+	const [loaded, setLoaded] = useState(false);
+	const [currentPage, setCurrentPage] = useState(1);
+	const [postsPerPage, setPostPerPage] = useState(10);
+
+	console.log("This is posts:", animeList);
 
 	const getTopAnime = () =>{
 		const tempAnime = axios.get("/getAnimelist")
@@ -27,21 +34,42 @@ function App() {
 		e.preventDefault();
 		console.log(search)
 		fetchAnime(search)
+
 	}
 
 	const fetchAnime = async (anime) =>{
 		const temp = axios.get(`/${anime}`) //creates a promise to get the data at /some anime
 			.then(res => res.data) //grabs the responses data
-			.then(data => setAnimeList(data.results)) //grabs the results and saves it into the animeList variable
+			.then(data => {
+				setLoaded(true);
+				setAnimeList(data.results)
+				
+			}) //grabs the results and saves it into the animeList variable
 			.catch(err => console.log(err))
 	}
 
+	// Get current Posts
+	const indexOfLastPosts = currentPage * postsPerPage;
+	const indexOfFirstPost = indexOfLastPosts - postsPerPage;
+	const currentPosts = animeList.slice(indexOfFirstPost, indexOfLastPosts);
+
+	//pagination, to change the page of what you're on
+	const paginate = pageNumber => setCurrentPage(pageNumber)
+
+	const prevPage = () => {
+		if(currentPage > 1){
+			setCurrentPage(currentPage - 1);
+		}
+	};
+	const nextPage = () => {
+		if(currentPage < Math.ceil(animeList.length/postsPerPage)){
+			setCurrentPage(currentPage + 1);
+		}
+	};
 	useEffect(() =>{
 		getTopAnime();
-		console.log("Top Anime");
 	}, []);
 
-	console.log(topAnime);
 
     return (
       	<div className="App">
@@ -51,7 +79,21 @@ function App() {
 				<MainContent HandleSearch={HandleSearch}
 				search={search}
 				setSearch={setSearch}
-				animeList={animeList}/>
+				postsPerPage={postsPerPage} 
+				totalPosts={animeList.length}
+				paginate={paginate}
+				prevPage={prevPage}
+				nextPage={nextPage}
+				animeList={currentPosts}
+				loaded={loaded}
+				/>
+				{/* <Pagination 
+				postsPerPage={props.postsPerPage} 
+				totalPosts={props.animeList.length}
+				paginate={props.paginate}
+				prevPage={props.prevPage}
+				nextPage={props.nextPage}
+				/> */}				
 			</div>
       	</div>
   );
