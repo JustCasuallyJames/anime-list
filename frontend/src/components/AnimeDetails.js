@@ -15,9 +15,12 @@ const AnimeDetails = ({ anime, index }) => {
                                     <img src={anime.image_url} className="modal-image" alt={`${anime.title} Image`} />
                                 </figure>
                                 <figure className="modal-body col-xl-8">
-                                    <h2>Episodes: {anime.episodes}</h2>
-                                    <h2>Score: {anime.score}</h2>
-                                    <h3>Synopsis: {anime.synopsis}</h3>
+									<h3><strong>Type: </strong>{anime.type}</h3>
+                                    {anime.type === "TV" ?<h3><strong>Episodes: </strong>{anime.episodes}</h3>: null}
+                                    <h3><strong>Score: </strong>{anime.score}/10</h3>
+                                    <h3><strong>Synopsis: </strong>{anime.synopsis}</h3>
+                                    <h3><strong>Start Date: </strong>{anime.start_date.substring(0,10)}</h3>
+                                    <h3><strong>End Date: </strong>{anime.airing ? "Still Airing" : anime.end_date.substring(0,10)}</h3>
 									<h6><a href={anime.url} target="_blank">Click here for more details.</a></h6>
                                 </figure>
                             </div>

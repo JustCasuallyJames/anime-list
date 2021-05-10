@@ -1,7 +1,13 @@
 
 function Header() {
     return (
-        <h1><strong>Anime</strong>Database</h1>
+        <a href="/" style={{
+            outline: "0",
+            color: "black",
+            "text-decoration": "none",
+        }}>
+            <h1><strong>Anime</strong>Database</h1>
+        </a>
     )
 }
 
