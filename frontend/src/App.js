@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import AnimeDetails from './components/AnimeDetails';
 import Search from './components/Search';
+import Homepage from './components/Homepage';
 
 function App() {
 	axios.defaults.baseURL = 'http://localhost:3000'; //this is to set the default so that the axios grabs data from that specific endpoint
@@ -18,11 +19,8 @@ function App() {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [postsPerPage, setPostPerPage] = useState(10);
 
-
-	console.log("This is posts:", animeList);
-
 	const getTopAnime = () => {
-		const tempAnime = axios.get("/getAnimelist")
+		const tempAnime = axios.get("/getTopAnime")
 			.then(res => res.data) //gets the response from the call and returns the data to be used to set the top Anime's
 			//this will grab the top elements of the top animes and sets it to the topAnime value
 			.then(data => setTopAnime(data.top.slice(0, 10)))
@@ -75,10 +73,9 @@ function App() {
 
 	return (
 		<div className="App">
-
 			<Header />
 			<div className="content-wrap">
-				
+					
 				{/* <Sidebar topAnime={topAnime}/> */}
 				<MainContent HandleSearch={HandleSearch}
 					search={search}
@@ -90,6 +87,7 @@ function App() {
 					nextPage={nextPage}
 					animeList={currentPosts}
 					loaded={loaded}
+					topAnime={topAnime}
 				/>
 			</div>
 		</div>

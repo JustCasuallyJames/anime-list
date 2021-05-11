@@ -42,6 +42,17 @@
 		}
 	}
 
+	.homepage-cards{
+		flex: 1 1 0%;
+		padding: 0px 16px;
+
+		display: flex;
+		flex-wrap: wrap;
+		margin-top: 32px;
+		margin: 32px -8px 0px;
+	}
+
+
 	.main-head {
 		display: flex;
 		justify-content: center;
@@ -78,10 +89,10 @@
 		}
 	}
 
-	main {
+	.main-page {
 		flex: 1 1 0%;
 		padding: 0px 16px;
-
+		
 		.anime-list {
 			display: flex;
 			flex-wrap: wrap;
@@ -92,6 +103,7 @@
 				flex: 1 1 33.33333%;
 				max-width: 33.33333%;
 				padding: 16px 8px;
+				
 
 				.modal-button{
 					background-color: Transparent;

@@ -25,8 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 //GET REQUESTS
 app.get("/", (req, res) => res.send("This is the homepage"));
 app.get("/newEndpoint", (req, res) => res.send("This is the new endpoint"));
-app.get("/getAnimelist", async (req, res) => {
-	const temp = await fetch(`${anime_url}/top/anime/1/bypopularity`)
+app.get("/getTopAnime", async (req, res) => {
+	const temp = await fetch(`${anime_url}/top/anime/1/tv`)
 		.then(res => res.json())
 	res.send(temp)
 });

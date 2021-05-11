@@ -18,9 +18,15 @@ const AnimeDetails = ({ anime, index }) => {
 									<h3><strong>Type: </strong>{anime.type}</h3>
                                     {anime.type === "TV" ?<h3><strong>Episodes: </strong>{anime.episodes}</h3>: null}
                                     <h3><strong>Score: </strong>{anime.score}/10</h3>
-                                    <h3><strong>Synopsis: </strong>{anime.synopsis}</h3>
-                                    <h3><strong>Start Date: </strong>{anime.start_date.substring(0,10)}</h3>
-                                    <h3><strong>End Date: </strong>{anime.airing ? "Still Airing" : anime.end_date.substring(0,10)}</h3>
+                                    <h3><strong>Synopsis: </strong>
+                                    {
+                                        anime.synopsis == null ? "Click the link below for the synopsis." : anime.synopsis
+                                    }</h3>
+                                    <h3><strong>Start Date: </strong>{anime.start_date == null ? "TBA": anime.start_date.substring(0,10)}</h3>
+                                    <h3><strong>End Date: </strong>
+                                    {
+                                        anime.airing ? "Still Airing" : (anime.end_date == null ? "TBA": anime.end_date.substring(0,10))
+                                    }</h3>
 									<h6><a href={anime.url} target="_blank">Click here for more details.</a></h6>
                                 </figure>
                             </div>
