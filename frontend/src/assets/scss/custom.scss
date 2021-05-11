@@ -1,0 +1,23 @@
+
+.table{
+	display: table;
+	margin: 0 auto;
+
+	ul.navbar-nav{
+		list-style: none;
+		justify-content: center;
+		li{
+			display:inline;
+			text-align: center;
+			
+			.nav-link{
+				font-size: 25px;
+				&:hover{
+					color:red;
+				}
+
+			}
+		}
+
+	}
+}

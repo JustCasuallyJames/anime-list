@@ -1,0 +1,24 @@
+.table {
+  display: table;
+  margin: 0 auto;
+}
+
+.table ul.navbar-nav {
+  list-style: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.table ul.navbar-nav li {
+  display: inline;
+  text-align: center;
+}
+
+.table ul.navbar-nav li .nav-link {
+  font-size: 25px;
+}
+
+.table ul.navbar-nav li .nav-link:hover {
+  color: red;
+}
