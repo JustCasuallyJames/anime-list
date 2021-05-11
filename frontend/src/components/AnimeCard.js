@@ -12,7 +12,7 @@ const AnimeCard = ({ anime, index}) => {
                 </figure>
                 <h3 className="anime-card-title">{anime.title}</h3>
             </button>
-        </article >
+        </article>
     );
 };
 

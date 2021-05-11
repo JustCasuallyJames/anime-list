@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import AnimeDetails from './components/AnimeDetails';
-
+import Search from './components/Search';
 
 function App() {
 	axios.defaults.baseURL = 'http://localhost:3000'; //this is to set the default so that the axios grabs data from that specific endpoint
@@ -21,11 +21,11 @@ function App() {
 
 	console.log("This is posts:", animeList);
 
-	const getTopAnime = () =>{
+	const getTopAnime = () => {
 		const tempAnime = axios.get("/getAnimelist")
 			.then(res => res.data) //gets the response from the call and returns the data to be used to set the top Anime's
 			//this will grab the top elements of the top animes and sets it to the topAnime value
-			.then(data => setTopAnime(data.top.slice(0,10)))
+			.then(data => setTopAnime(data.top.slice(0, 10)))
 			.catch(err => console.log(err)) //catches for errors
 	}
 
@@ -39,13 +39,13 @@ function App() {
 
 	}
 
-	const fetchAnime = async (anime) =>{
+	const fetchAnime = async (anime) => {
 		const temp = axios.get(`/${anime}`) //creates a promise to get the data at /some-anime
 			.then(res => res.data) //grabs the responses data
 			.then(data => {
 				setLoaded(true);
 				setAnimeList(data.results)
-				
+
 			}) //grabs the results and saves it into the animeList variable
 			.catch(err => console.log(err))
 	}
@@ -59,39 +59,41 @@ function App() {
 	const paginate = pageNumber => setCurrentPage(pageNumber)
 
 	const prevPage = () => {
-		if(currentPage > 1){
+		if (currentPage > 1) {
 			setCurrentPage(currentPage - 1);
 		}
 	};
 	const nextPage = () => {
-		if(currentPage < Math.ceil(animeList.length/postsPerPage)){
+		if (currentPage < Math.ceil(animeList.length / postsPerPage)) {
 			setCurrentPage(currentPage + 1);
 		}
 	};
-	useEffect(() =>{
+	useEffect(() => {
 		getTopAnime();
 	}, []);
 
 
-    return (
-      	<div className="App">
-        	<Header/>
+	return (
+		<div className="App">
+
+			<Header />
 			<div className="content-wrap">
+				
 				{/* <Sidebar topAnime={topAnime}/> */}
 				<MainContent HandleSearch={HandleSearch}
-				search={search}
-				setSearch={setSearch}
-				postsPerPage={postsPerPage} 
-				totalPosts={animeList.length}
-				paginate={paginate}
-				prevPage={prevPage}
-				nextPage={nextPage}
-				animeList={currentPosts}
-				loaded={loaded}
-				/>				
+					search={search}
+					setSearch={setSearch}
+					postsPerPage={postsPerPage}
+					totalPosts={animeList.length}
+					paginate={paginate}
+					prevPage={prevPage}
+					nextPage={nextPage}
+					animeList={currentPosts}
+					loaded={loaded}
+				/>
 			</div>
-      	</div>
-  );
+		</div>
+	);
 }
 
 export default App;

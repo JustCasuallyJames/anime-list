@@ -44,35 +44,28 @@
   color: #AAA;
 }
 
-.content-wrap main {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 0%;
-          flex: 1 1 0%;
-  padding: 0px 16px;
-}
-
-.content-wrap main .main-head {
+.content-wrap .main-head {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.content-wrap main .main-head .search-box {
+.content-wrap .main-head .search-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 0%;
           flex: 1 1 0%;
 }
 
-.content-wrap main .main-head .search-box input {
+.content-wrap .main-head .search-box input {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -89,25 +82,32 @@
   transition: 0.4s;
 }
 
-.content-wrap main .main-head .search-box input ::-webkit-input-placeholder {
+.content-wrap .main-head .search-box input ::-webkit-input-placeholder {
   color: #888;
 }
 
-.content-wrap main .main-head .search-box input :-ms-input-placeholder {
+.content-wrap .main-head .search-box input :-ms-input-placeholder {
   color: #888;
 }
 
-.content-wrap main .main-head .search-box input ::-ms-input-placeholder {
+.content-wrap .main-head .search-box input ::-ms-input-placeholder {
   color: #888;
 }
 
-.content-wrap main .main-head .search-box input ::placeholder {
+.content-wrap .main-head .search-box input ::placeholder {
   color: #888;
 }
 
-.content-wrap main .main-head .search-box input:focus, .content-wrap main .main-head .search-box input:valid {
+.content-wrap .main-head .search-box input:focus, .content-wrap .main-head .search-box input:valid {
   background-color: #313131;
   color: #FFF;
+}
+
+.content-wrap main {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
+  padding: 0px 16px;
 }
 
 .content-wrap main .anime-list {
