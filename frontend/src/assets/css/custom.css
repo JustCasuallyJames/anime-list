@@ -22,3 +22,12 @@
 .table ul.navbar-nav li .nav-link:hover {
   color: red;
 }
+
+.pagination-nav .pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
