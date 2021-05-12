@@ -24,14 +24,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //GET REQUESTS
 app.get("/", (req, res) => res.send("This is the homepage"));
-app.get("/getTopAnime", async (req, res) => {
+app.get("/anime/getTopAnime", async (req, res) => {
+	console.log("Inside the /anime/getTopAnime....")
 	const temp = await fetch(`${anime_url}/top/anime/1/tv`)
 		.then(res => res.json())
 	res.send(temp)
 });
 
+//obtains the top 10 data for the manga
+app.get("/manga/getTopManga", async (req, res) => {
+	console.log("Inside the /manga/getTopManga....")
+	const temp = await fetch(`${anime_url}/top/manga/1/manga`)
+		.then(res => res.json())
+	res.send(temp)
+	
+})
+
 //obtains the top results data for the anime
 app.get("/:anime", async (req, res) => {
+	console.log("Inside the /:anime")
 	console.log("Backend: req.params.anime:",req.params.anime); 
 	console.log("Backend: req.params.limit:",req.params.limit); 
 	const anime = req.params.anime;
@@ -44,6 +55,7 @@ app.get("/:anime", async (req, res) => {
 
 //obtains the top results data for the anime
 app.get("/:anime/:page", async (req, res) => {
+	console.log("Inside the /:anime/:page")
 	console.log("Backend: req.params.anime:",req.params.anime); 
 	console.log("Backend: req.params.limit:",req.params.limit); 
 	const anime = req.params.anime;
@@ -53,15 +65,6 @@ app.get("/:anime/:page", async (req, res) => {
 		.then(res => res.json())
 	res.send(temp);
 })
-
-//obtains the top 10 data for the manga
-app.get("/getTopManga", async (req, res) => {
-	const temp = await fetch(`https://api.jikan.moe/v3/top/manga/1/manga`)
-		.then(res => res.json())
-	res.send(temp)
-})
-
-
 
 // error handler
 app.use(function(err, req, res, next) {
