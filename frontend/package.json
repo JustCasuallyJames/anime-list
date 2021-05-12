@@ -1,5 +1,5 @@
 {
-  "name": "crypto-display",
+  "name": "AnimeDatabase",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3000",
@@ -40,5 +40,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "chromedriver": "^90.0.0",
+    "geckodriver": "^1.22.3",
+    "nightwatch": "^1.6.3"
   }
 }

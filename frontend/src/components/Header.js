@@ -7,10 +7,10 @@ function Header() {
             "text-decoration": "none",
             "text-align": "center",
             padding: "100px",
-        }}>
+        }} >
             <h1 style={{
                 fontSize: "55px"
-            }}><strong>Anime</strong>Database</h1>
+            }} className="header-name"><strong>Anime</strong>Database</h1>
         </a>
     )
 }

@@ -17,7 +17,9 @@ function App() {
 	//used for the accessing of the animes
 	const [animeList, setAnimeList] = useState([]);
 	const [topAnime, setTopAnime] = useState([]);
+
 	const [search, setSearch] = useState("");
+	const [pastSearch, setPastSearch] = useState("");
 	const [topManga, setTopManga] = useState([]);
 	const [topUpcomingAnime, setTopUpcomingAnime] = useState([]);
 	//primarily used for the pagination
@@ -53,8 +55,7 @@ function App() {
 		*/
 		e.preventDefault();
 		console.log(search);
-		fetchAnime(search);
-
+		fetchAnime(search);		
 	}
 
 	const fetchAnime = async (anime) => {
@@ -96,7 +97,10 @@ function App() {
 		<Router>
 			<div className="App">
 				<Header />
-				<Search HandleSearch={HandleSearch} setSearch={setSearch} search={search} />
+				<Search HandleSearch={HandleSearch}
+					setSearch={setSearch}
+					search={search}
+					/>
 				<Navbar />
 				<div className="content-wrap">
 					<Switch>
