@@ -26,6 +26,20 @@ In the frontend terminal (the right terminal in the picture), you're going to wa
 
 Now you should be able to run the website and be able to look at all the data from the Jikan Api!
 
+## What the website looks like
+### Demo Link
+https://youtu.be/tNCyyuQv0iM
+### Home Page
+![image](https://user-images.githubusercontent.com/50897551/118029197-ca53ab00-b318-11eb-85e6-1bf4415941e4.png)
+### After search results
+![image](https://user-images.githubusercontent.com/50897551/118029332-e9ead380-b318-11eb-871d-41222cf05168.png)
+### Top Manga
+![image](https://user-images.githubusercontent.com/50897551/118029398-fc650d00-b318-11eb-9875-332c727cce82.png)
+### Top Upcoming Anime
+![image](https://user-images.githubusercontent.com/50897551/118029455-0a1a9280-b319-11eb-95de-6f6674b099f1.png)
+### After clicking on one of the anime cards
+![image](https://user-images.githubusercontent.com/50897551/118029542-1ef72600-b319-11eb-9f11-a65d6470c401.png)
+
 ## Frameworks and Tools used
 1. VSCode
 2. ExpressJS
