@@ -1,25 +1,37 @@
-# Anime List
+# Anime List (AnimeDatabase)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+AnimeDatabase collects data from the Jikan API, an unofficial MyAnimeList API, and displays it to the AnimeDatabase website. You're able to search up the top results of any anime you type and you're also able to look at the Top section which displays the Top results of certain categories such as Manga and Upcoming Animes.
 
-## Available Scripts
+## Things you need to do before running the web-app
+First, you need to have Node installed. Go ahead and download Node first so that you can run the `npm` commands. <br/> <br/> 
 
-In the project directory, you can run:
+Once you've installed Node, then what you want to do is find a directory in your computer where you want to download this repository. <br/> <br/> 
 
-### `npm start`
+Once you've figured that out, open the terminal and navigate to that specific folder. If you're on windows, you can alternatively navigate to the folder where you want to download it and do `ctrl + right click` then click `open with terminal` or `open with git Bash`. Either works, we just need to have a terminal that navigates to where you want to download the repo. <br/> <br/> 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Once you're there, you need to clone the repository. Look up any guides on how to clone a repository. Then once you've cloned it, `cd` into the repository name, in this case it's `anime-list`. <br/> <br/>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Now we can get started on how to run the web-app <br/> <br/> 
 
-### `npm run build`
+## How to run the web-app
+We're going to need two terminals that direct to where the `/anime-list` folder is at. The reason being is that we need one to run the backend side and one to the run the frontend side. <br/> <br/> 
+On one terminal, you're going to want to type in `cd backend`, indicating that the terminal is to run the backend side. On the other terminal, you're going to want to type in `cd frontend`, indicating that the terminal is to run the frontend side. Below is an example of what you should see after cd'ing into those respective folders. <br/> <br/>
+![image](https://user-images.githubusercontent.com/50897551/117921870-57115100-b2a6-11eb-9823-65c3bf52bcb8.png)
+<br/> <br/>
+In the backend terminal (the left terminal in the picture), you need to run the command `npm install` to install all the dependecies. 
+There are some vulnerabilities but just follow the prompt given. Repeat with the frontend terminal (the right terminal in the picture). <br/> <br/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In the backend terminal (the left terminal in the picture), you're going to want to run the command `node app.js` to run the express server. <br/> <br/>
+In the frontend terminal (the right terminal in the picture), you're going to want to run the command `npm start` which starts the front end side. It's going to default to be running on `port 3000`, so when it says if you want to start it on a different port, put `yes`. <br/> <br/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Now you should be able to run the website and be able to look at all the data from the Jikan Api!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Frameworks and Tools used
+1. VSCode
+2. ExpressJS
+3. ReactJS
+4. Axios
+5. React Router Dom
+6. Bootstrap
+7. NightwatchJS
+8. SASS
