@@ -92,7 +92,6 @@ function App() {
 							<Homepage topAnime={topAnime} />
 						</Route>
 						<Route path="/manga/getTopManga">
-							{console.log("Top manga:", topManga)}
 							<Posts animeList={topManga} />
 							
 						</Route>
