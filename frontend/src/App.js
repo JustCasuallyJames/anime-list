@@ -4,10 +4,13 @@ import axios from 'axios';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Search from './components/Search';
-import Homepage from './components/Homepage';
 import Navbar from './components/Navbar';
 import Posts from './components/Posts';
-import Pagination from './components/Pagination';
+//main pages
+import Homepage from './components/Homepage';
+import TopManga from './components/TopManga';
+import TopUpcomingAnime from './components/TopUpcomingAnime';
+
 
 function App() {
 	axios.defaults.baseURL = 'http://localhost:3000'; //this is to set the default so that the axios grabs data from that specific endpoint
@@ -33,14 +36,14 @@ function App() {
 	const getTopManga = () => {
 		axios.get("/manga/getTopManga")
 			.then(res => res.data)
-			.then(data => setTopManga(data.top.slice(0,10)))
+			.then(data => setTopManga(data.top.slice(0, 10)))
 			.catch(err => console.log(err))
 	}
 
 	const getTopUpcomingAnime = () => {
 		axios.get("/anime/getTopUpcomingAnime")
 			.then(res => res.data)
-			.then(data => setTopUpcomingAnime(data.top.slice(0,10)))
+			.then(data => setTopUpcomingAnime(data.top.slice(0, 10)))
 			.catch(err => console.log(err))
 	}
 
@@ -102,12 +105,12 @@ function App() {
 						</Route>
 						<Route path="/manga/getTopManga">
 							{console.log("Top manga:", topManga)}
-							<Posts animeList={topManga} />
-							
+							<TopManga topManga={topManga} />
+
 						</Route>
 						<Route path="/anime/getTopUpcomingAnime">
 							{console.log("Top upcoming:", topUpcomingAnime)}
-							<Posts animeList={topUpcomingAnime}/>
+							<TopUpcomingAnime topUpcomingAnime={topUpcomingAnime} />
 						</Route>
 						<Route path="/:anime">
 							<Posts animeList={currentPosts}
