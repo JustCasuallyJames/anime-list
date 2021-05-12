@@ -23,10 +23,12 @@ const Navbar = () => {
 										Top
           							</a>
 									<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-										<Link to="/manga/getTopManga" style={{"text-decoration": "none"}}>
+										<Link to="/manga/getTopManga" style={{ "text-decoration": "none" }}>
 											<li><a class="dropdown-item" href="/manga/getTopManga">Top Manga</a></li>
 										</Link>
-										<li><a class="dropdown-item" href="#">Top Characters</a></li>
+										<Link to="/anime/getTopUpcomingAnime" style={{ "text-decoration": "none" }}>
+											<li><a class="dropdown-item" href="/anime/getTopUpcomingAnime">Top Upcoming Animes</a></li>
+										</Link>
 									</ul>
 								</li>
 							</ul>

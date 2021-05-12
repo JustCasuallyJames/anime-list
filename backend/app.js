@@ -40,6 +40,15 @@ app.get("/manga/getTopManga", async (req, res) => {
 	
 })
 
+//obtains the top 10 upcoming animes
+app.get("/anime/getTopUpcomingAnime", async (req, res) => {
+	console.log("Inside the /anime/getTopUpcomingAnime....")
+	const temp = await fetch(`${anime_url}/top/anime/1/upcoming`)
+		.then(res => res.json())
+	res.send(temp)
+	
+})
+
 //obtains the top results data for the anime
 app.get("/:anime", async (req, res) => {
 	console.log("Inside the /:anime")

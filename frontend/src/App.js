@@ -16,13 +16,14 @@ function App() {
 	const [topAnime, setTopAnime] = useState([]);
 	const [search, setSearch] = useState("");
 	const [topManga, setTopManga] = useState([]);
+	const [topUpcomingAnime, setTopUpcomingAnime] = useState([]);
 	//primarily used for the pagination
 	const [loaded, setLoaded] = useState(false);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [postsPerPage, setPostPerPage] = useState(10);
 
 	const getTopAnime = () => {
-		const tempAnime = axios.get("/anime/getTopAnime")
+		axios.get("/anime/getTopAnime")
 			.then(res => res.data) //gets the response from the call and returns the data to be used to set the top Anime's
 			//this will grab the top elements of the top animes and sets it to the topAnime value
 			.then(data => setTopAnime(data.top.slice(0, 10)))
@@ -30,9 +31,16 @@ function App() {
 	}
 
 	const getTopManga = () => {
-		const tempManga = axios.get("/manga/getTopManga")
+		axios.get("/manga/getTopManga")
 			.then(res => res.data)
 			.then(data => setTopManga(data.top.slice(0,10)))
+			.catch(err => console.log(err))
+	}
+
+	const getTopUpcomingAnime = () => {
+		axios.get("/anime/getTopUpcomingAnime")
+			.then(res => res.data)
+			.then(data => setTopUpcomingAnime(data.top.slice(0,10)))
 			.catch(err => console.log(err))
 	}
 
@@ -78,6 +86,7 @@ function App() {
 	useEffect(() => {
 		getTopAnime();
 		getTopManga();
+		getTopUpcomingAnime();
 	}, []);
 
 	return (
@@ -95,6 +104,10 @@ function App() {
 							{console.log("Top manga:", topManga)}
 							<Posts animeList={topManga} />
 							
+						</Route>
+						<Route path="/anime/getTopUpcomingAnime">
+							{console.log("Top upcoming:", topUpcomingAnime)}
+							<Posts animeList={topUpcomingAnime}/>
 						</Route>
 						<Route path="/:anime">
 							<Posts animeList={currentPosts}
