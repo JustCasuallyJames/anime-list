@@ -24,15 +24,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //GET REQUESTS
 app.get("/", (req, res) => res.send("This is the homepage"));
-app.get("/newEndpoint", (req, res) => res.send("This is the new endpoint"));
 app.get("/getTopAnime", async (req, res) => {
 	const temp = await fetch(`${anime_url}/top/anime/1/tv`)
 		.then(res => res.json())
 	res.send(temp)
 });
 
+//obtains the top results data for the anime
 app.get("/:anime", async (req, res) => {
-	// /search/anime?q=${query}&order_by=title&sort=asc&limit=5
 	console.log("Backend: req.params.anime:",req.params.anime); 
 	console.log("Backend: req.params.limit:",req.params.limit); 
 	const anime = req.params.anime;
@@ -41,6 +40,25 @@ app.get("/:anime", async (req, res) => {
 	const temp = await fetch(`${anime_url}/search/anime?q=${query}&order_by=title&sort=asc`)
 		.then(res => res.json())
 	res.send(temp);
+})
+
+//obtains the top results data for the anime
+app.get("/:anime/:page", async (req, res) => {
+	console.log("Backend: req.params.anime:",req.params.anime); 
+	console.log("Backend: req.params.limit:",req.params.limit); 
+	const anime = req.params.anime;
+	const limit = req.params.limit;
+	const query = anime;
+	const temp = await fetch(`${anime_url}/search/anime?q=${query}&order_by=title&sort=asc`)
+		.then(res => res.json())
+	res.send(temp);
+})
+
+//obtains the top 10 data for the manga
+app.get("/getTopManga", async (req, res) => {
+	const temp = await fetch(`https://api.jikan.moe/v3/top/manga/1/manga`)
+		.then(res => res.json())
+	res.send(temp)
 })
 
 
@@ -55,6 +73,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 module.exports = app;
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

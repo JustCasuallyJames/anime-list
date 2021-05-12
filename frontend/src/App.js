@@ -2,14 +2,12 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import axios from 'axios';
 import Header from './components/Header';
-import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
-import AnimeDetails from './components/AnimeDetails';
 import Search from './components/Search';
 import Homepage from './components/Homepage';
 import Navbar from './components/Navbar';
 import Posts from './components/Posts';
-
+import Pagination from './components/Pagination';
 
 function App() {
 	axios.defaults.baseURL = 'http://localhost:3000'; //this is to set the default so that the axios grabs data from that specific endpoint
@@ -17,7 +15,7 @@ function App() {
 	const [animeList, setAnimeList] = useState([]);
 	const [topAnime, setTopAnime] = useState([]);
 	const [search, setSearch] = useState("");
-	const [animeData, setAnimeData] = useState([]);
+	const [topManga, setTopManga] = useState([]);
 	//primarily used for the pagination
 	const [loaded, setLoaded] = useState(false);
 	const [currentPage, setCurrentPage] = useState(1);
@@ -31,9 +29,16 @@ function App() {
 			.catch(err => console.log(err)) //catches for errors
 	}
 
+	const getTopManga = () => {
+		const tempManga = axios.get("/getTopManga")
+			.then(res => res.data)
+			.then(data => setTopManga(data.results.slice(0,10)))
+			.catch(err => console.log(err))
+	}
+
 	const HandleSearch = e => {
 		/*
-			On search,  
+			Upon pressing enter, it will gather the data and fetch the results from what was inputted into the anime database
 		*/
 		e.preventDefault();
 		console.log(search);
@@ -74,6 +79,10 @@ function App() {
 		getTopAnime();
 	}, []);
 
+	useEffect(() => {
+		getTopManga();
+	}, []);
+
 
 	return (
 		<Router>
@@ -86,11 +95,20 @@ function App() {
 						<Route exact path="/">
 							<Homepage topAnime={topAnime} />
 						</Route>
-						<Route path="/topManga">
-							<Posts animeList={topAnime}/>
+						<Route path="/getTopManga">
+							{console.log("Top manga:", topManga)}
+							<Posts animeList={topManga} />
+							
 						</Route>
 						<Route path="/:anime">
-							<Posts animeList={animeList}/>
+							<Posts animeList={currentPosts}
+								postsPerPage={postsPerPage}
+								totalPosts={animeList.length}
+								paginate={paginate}
+								prevPage={prevPage}
+								nextPage={nextPage}
+								loaded={loaded}
+							/>
 						</Route>
 						{/* <MainContent HandleSearch={HandleSearch}
 							search={search}
