@@ -44,7 +44,97 @@
   color: #AAA;
 }
 
-.content-wrap .homepage-cards {
+.anime-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 32px;
+  margin: 32px -8px 0px;
+}
+
+.anime-list .anime-card {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 33.33333%;
+          flex: 1 1 33.33333%;
+  max-width: 33.33333%;
+  padding: 16px 8px;
+}
+
+.anime-list .anime-card .modal-button {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  width: 90%;
+}
+
+.anime-list .anime-card a {
+  text-decoration: none;
+}
+
+.anime-list .anime-card .figure-outer-block {
+  display: block;
+  margin-bottom: 16px;
+  padding: 2rem;
+  padding-bottom: 0.7rem;
+}
+
+.anime-list .anime-card .figure-outer-block .image-inner-block {
+  display: block;
+  width: 100%;
+  height: 600px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 16px;
+  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.anime-list .anime-card .anime-card-title {
+  color: #313131;
+  text-align: center;
+}
+
+.anime-list .anime-card:hover .figure-outer-block .image-inner-block {
+  -webkit-box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.anime-list .anime-card .modal-entire-body {
+  display: inline-block;
+}
+
+.anime-list .anime-card .modal-entire-body img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  height: 600px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 16px;
+  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  outline: black;
+}
+
+.anime-list .anime-card .modal-entire-body h2 {
+  display: inline-block;
+}
+
+.anime-list .anime-card .modal-entire-body h3 {
+  display: inline-block;
+}
+
+.homepage-cards {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 0%;
           flex: 1 1 0%;
@@ -58,7 +148,14 @@
   margin: 32px -8px 0px;
 }
 
-.content-wrap .main-head {
+.homepage-cards .main-page {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
+  padding: 0px 16px;
+}
+
+.main-head {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -67,7 +164,7 @@
           justify-content: center;
 }
 
-.content-wrap .main-head .search-box {
+.main-head .search-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -79,7 +176,7 @@
           flex: 1 1 0%;
 }
 
-.content-wrap .main-head .search-box input {
+.main-head .search-box input {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -96,120 +193,23 @@
   transition: 0.4s;
 }
 
-.content-wrap .main-head .search-box input ::-webkit-input-placeholder {
+.main-head .search-box input ::-webkit-input-placeholder {
   color: #888;
 }
 
-.content-wrap .main-head .search-box input :-ms-input-placeholder {
+.main-head .search-box input :-ms-input-placeholder {
   color: #888;
 }
 
-.content-wrap .main-head .search-box input ::-ms-input-placeholder {
+.main-head .search-box input ::-ms-input-placeholder {
   color: #888;
 }
 
-.content-wrap .main-head .search-box input ::placeholder {
+.main-head .search-box input ::placeholder {
   color: #888;
 }
 
-.content-wrap .main-head .search-box input:focus, .content-wrap .main-head .search-box input:valid {
+.main-head .search-box input:focus, .main-head .search-box input:valid {
   background-color: #313131;
   color: #FFF;
-}
-
-.content-wrap .main-page {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 0%;
-          flex: 1 1 0%;
-  padding: 0px 16px;
-}
-
-.content-wrap .main-page .anime-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin-top: 32px;
-  margin: 32px -8px 0px;
-}
-
-.content-wrap .main-page .anime-list .anime-card {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 33.33333%;
-          flex: 1 1 33.33333%;
-  max-width: 33.33333%;
-  padding: 16px 8px;
-}
-
-.content-wrap .main-page .anime-list .anime-card .modal-button {
-  background-color: Transparent;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  outline: none;
-  width: 90%;
-}
-
-.content-wrap .main-page .anime-list .anime-card a {
-  text-decoration: none;
-}
-
-.content-wrap .main-page .anime-list .anime-card .figure-outer-block {
-  display: block;
-  margin-bottom: 16px;
-  padding: 2rem;
-  padding-bottom: 0.7rem;
-}
-
-.content-wrap .main-page .anime-list .anime-card .figure-outer-block .image-inner-block {
-  display: block;
-  width: 100%;
-  height: 600px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 16px;
-  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
-          box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-.content-wrap .main-page .anime-list .anime-card .anime-card-title {
-  color: #313131;
-  text-align: center;
-}
-
-.content-wrap .main-page .anime-list .anime-card:hover .figure-outer-block .image-inner-block {
-  -webkit-box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
-          box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
-}
-
-.content-wrap .main-page .anime-list .anime-card .modal-entire-body {
-  display: inline-block;
-}
-
-.content-wrap .main-page .anime-list .anime-card .modal-entire-body img {
-  display: inline-block;
-  vertical-align: middle;
-  width: 100%;
-  height: 600px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 16px;
-  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
-          box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
-  padding: 1rem;
-  outline: black;
-}
-
-.content-wrap .main-page .anime-list .anime-card .modal-entire-body h2 {
-  display: inline-block;
-}
-
-.content-wrap .main-page .anime-list .anime-card .modal-entire-body h3 {
-  display: inline-block;
 }

@@ -10,6 +10,7 @@ const Posts = ({ animeList }) => {
 					<AnimeDetails anime={anime} key={anime.mal_id} index={anime.mal_id} />
 				))}
 			</div>
+
 		)
 	}
 

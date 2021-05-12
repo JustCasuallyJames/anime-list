@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import axios from 'axios';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
@@ -6,6 +7,9 @@ import MainContent from './components/MainContent';
 import AnimeDetails from './components/AnimeDetails';
 import Search from './components/Search';
 import Homepage from './components/Homepage';
+import Navbar from './components/Navbar';
+import Posts from './components/Posts';
+
 
 function App() {
 	axios.defaults.baseURL = 'http://localhost:3000'; //this is to set the default so that the axios grabs data from that specific endpoint
@@ -32,8 +36,8 @@ function App() {
 			On search,  
 		*/
 		e.preventDefault();
-		console.log(search)
-		fetchAnime(search)
+		console.log(search);
+		fetchAnime(search);
 
 	}
 
@@ -72,25 +76,40 @@ function App() {
 
 
 	return (
-		<div className="App">
-			<Header />
-			<div className="content-wrap">
-					
-				{/* <Sidebar topAnime={topAnime}/> */}
-				<MainContent HandleSearch={HandleSearch}
-					search={search}
-					setSearch={setSearch}
-					postsPerPage={postsPerPage}
-					totalPosts={animeList.length}
-					paginate={paginate}
-					prevPage={prevPage}
-					nextPage={nextPage}
-					animeList={currentPosts}
-					loaded={loaded}
-					topAnime={topAnime}
-				/>
+		<Router>
+			<div className="App">
+				<Header />
+				<Search HandleSearch={HandleSearch} setSearch={setSearch} search={search} />
+				<Navbar />
+				<div className="content-wrap">
+					<Switch>
+						<Route exact path="/">
+							<Homepage topAnime={topAnime} />
+						</Route>
+						<Route path="/topManga">
+							<Posts animeList={topAnime}/>
+						</Route>
+						<Route path="/:anime">
+							<Posts animeList={animeList}/>
+						</Route>
+						{/* <MainContent HandleSearch={HandleSearch}
+							search={search}
+							setSearch={setSearch}
+							postsPerPage={postsPerPage}
+							totalPosts={animeList.length}
+							paginate={paginate}
+							prevPage={prevPage}
+							nextPage={nextPage}
+							animeList={currentPosts}
+							loaded={loaded}
+							topAnime={topAnime}
+						/> */}
+					</Switch>
+
+				</div>
 			</div>
-		</div>
+		</Router>
+
 	);
 }
 
