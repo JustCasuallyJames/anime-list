@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="geckodriver1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/frontend/node_modules/geckodriver/geckodriver.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
